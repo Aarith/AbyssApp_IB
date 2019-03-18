@@ -13,6 +13,7 @@
 		20787893223FD11B0087A580 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20787891223FD11B0087A580 /* Main.storyboard */; };
 		20787895223FD11B0087A580 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20787894223FD11B0087A580 /* Assets.xcassets */; };
 		20787898223FD11B0087A580 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20787896223FD11B0087A580 /* LaunchScreen.storyboard */; };
+		207878A0223FD31F0087A580 /* MovieDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2078789F223FD31F0087A580 /* MovieDataModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		20787894223FD11B0087A580 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		20787897223FD11B0087A580 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		20787899223FD11B0087A580 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2078789F223FD31F0087A580 /* MovieDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDataModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 				2078788D223FD11B0087A580 /* MasterViewController.swift */,
 				2078788F223FD11B0087A580 /* DetailViewController.swift */,
 				20787891223FD11B0087A580 /* Main.storyboard */,
+				2078789F223FD31F0087A580 /* MovieDataModel.swift */,
 				20787894223FD11B0087A580 /* Assets.xcassets */,
 				20787896223FD11B0087A580 /* LaunchScreen.storyboard */,
 				20787899223FD11B0087A580 /* Info.plist */,
@@ -140,6 +143,7 @@
 			files = (
 				20787890223FD11B0087A580 /* DetailViewController.swift in Sources */,
 				2078788E223FD11B0087A580 /* MasterViewController.swift in Sources */,
+				207878A0223FD31F0087A580 /* MovieDataModel.swift in Sources */,
 				2078788C223FD11B0087A580 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
