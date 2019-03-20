@@ -9,11 +9,15 @@
 import Foundation
 import UIKit
 
-class MovieDataController: NSObject{
+class MovieDataController: Codable{
+    
+    
     
     let JSONURL = "https://api.myjson.com/bins/1e5uji"
-    let franchises: [franchise]
+    var franchises: [franchise]
     var dataArray = ["Unexpected Data. Check URL."]
+    var entryArray = ["Potato"]
+    var starArray = ["William Shatner"]
     
     
     class franchise : Codable {
@@ -62,5 +66,3 @@ class MovieDataController: NSObject{
         task.resume()
     }
 }
-
-
