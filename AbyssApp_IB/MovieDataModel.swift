@@ -14,24 +14,25 @@ class MovieDataController: Codable{
     
     
     let JSONURL = "https://api.myjson.com/bins/1e5uji"
-    var franchises: [franchise]
+    var franchises: [Franchises]
     var dataArray = ["Unexpected Data. Check URL."]
     var entryArray = ["Potato"]
     var starArray = ["William Shatner"]
     
     
-    class franchise : Codable {
+    class Franchises : Codable {
         let franchiseName: String
-        let entries: [entries]
+        let entries: [Entries]
     }
     
-    class entries : Codable {
+    class Entries : Codable {
         let name: String
         let format: String
         let yearStart: String
-        let yearEnd: String
-        let episodes: Int
-        let network: String
+        let yearEnd: String?
+        let episodes: Int?
+        let studio: String?
+        let network: String?
         let imageURL: String
         let description: String
         let summary: String
@@ -43,26 +44,5 @@ class MovieDataController: Codable{
         let playing: String
     }
     
-    func getData(completion: @escaping (_ success:Bool) -> ()) {
-        var success = true
-        let actualURL = URL(string: JSONURL)
-        
-        let task = URLSession.shared.dataTask(with: actualURL!) { (data,response,error) in
-            
-            if let _ = data, error == nil {
-                if let jsonObj = try? JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? NSDictionary {
-                    if let movieArray = jsonObj!.value(forKey: "franchise") as?
-                        Array<String> {
-                        self.dataArray = movieArray
-                        
-                        print(jsonObj!.value(forKey: "franchise")!)
-                    }
-                }
-            } else {
-                success = false
-            }
-            completion(success)
-        }
-        task.resume()
-    }
+ 
 }

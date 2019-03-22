@@ -12,6 +12,12 @@ class MasterViewController: UITableViewController {
 
     var detailViewController: DetailViewController? = nil
     var objects = [Any]()
+    let dataController = DataController()
+    var rebootDataModel: MovieDataModel? {
+        didSet {
+            tableView.reloadData()
+        }
+    }
 
 
     override func viewDidLoad() {
@@ -25,8 +31,16 @@ class MasterViewController: UITableViewController {
             let controllers = split.viewControllers
             detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
         }
+    
+    
+    let titleImage = UIImage(named: "IRDb")
+    let titleImageView = UIImageView(image: titleImage)
+        navigationItem.titleView = titleImageView
+    
+    dataController.getData(completion: {dataModel in
+        self.rebootDataModel = dataModel
+    })
     }
-
     override func viewWillAppear(_ animated: Bool) {
         clearsSelectionOnViewWillAppear = splitViewController!.isCollapsed
         super.viewWillAppear(animated)

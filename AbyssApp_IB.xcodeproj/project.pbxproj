@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		20031EB022451ACB00BB52E5 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20031EAF22451ACB00BB52E5 /* DataController.swift */; };
 		2078788C223FD11B0087A580 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2078788B223FD11B0087A580 /* AppDelegate.swift */; };
 		2078788E223FD11B0087A580 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2078788D223FD11B0087A580 /* MasterViewController.swift */; };
 		20787890223FD11B0087A580 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2078788F223FD11B0087A580 /* DetailViewController.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		20031EAF22451ACB00BB52E5 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		20787888223FD11B0087A580 /* AbyssApp_IB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AbyssApp_IB.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2078788B223FD11B0087A580 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2078788D223FD11B0087A580 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 				2078788F223FD11B0087A580 /* DetailViewController.swift */,
 				20787891223FD11B0087A580 /* Main.storyboard */,
 				2078789F223FD31F0087A580 /* MovieDataModel.swift */,
+				20031EAF22451ACB00BB52E5 /* DataController.swift */,
 				20787894223FD11B0087A580 /* Assets.xcassets */,
 				20787896223FD11B0087A580 /* LaunchScreen.storyboard */,
 				20787899223FD11B0087A580 /* Info.plist */,
@@ -141,6 +144,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20031EB022451ACB00BB52E5 /* DataController.swift in Sources */,
 				20787890223FD11B0087A580 /* DetailViewController.swift in Sources */,
 				2078788E223FD11B0087A580 /* MasterViewController.swift in Sources */,
 				207878A0223FD31F0087A580 /* MovieDataModel.swift in Sources */,
