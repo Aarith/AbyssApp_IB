@@ -8,35 +8,40 @@
 
 import UIKit
 
-class DataController: NSObject {
+class DataController {
     
     let JSONURL = "https://api.myjson.com/bins/1e5uji"
-    var dataArray = ["Unexpected Data. Check URL."]
-    var entryArray = ["Potato"]
-    var starArray = ["William Shatner"]
-    var dataModel: Any?
+   
+    var dataModel = MovieDataModel()
 
-    func getData(completion: @escaping (_ dataModel: MovieDataModel) -> ()) {
-        var success = Data()
+    func getData(completion: @escaping (_ success: MovieDataModel) -> ()) {
         let actualURL = URL(string: JSONURL)
         
-        let task = URLSession.shared.dataTask(with: actualURL!) { (data,response,error) in
-           
-            guard let data = data else {
-                return
-            }
-            do {
-                let decoder = JSONDecoder ()
-                let mediaData = try decoder.decode(MovieDataModel.self, from: data)
-                self.dataModel = mediaData
-            }
-            catch let err {
-                print("Error", err)
-            }
-            DispatchQueue.main.async {
-            completion(self.dataModel as! MovieDataModel)
-            }
+        let session = URLSession.shared
+        
+        let task = session.dataTask(with: actualURL!) {(data,response,error) in
+            
+        if error != nil {
+            return
         }
-        task.resume()
+        
+        guard let data = data else {
+            return
+        }
+        
+        do {
+            let decoder = JSONDecoder()
+            let mediaData = try decoder.decode(MovieDataModel.self, from: data)
+            self.dataModel = mediaData
+        } catch {
+            print(error)
+            return
+        }
+        
+        DispatchQueue.main.async{
+            completion(self.dataModel as! MovieDataModel)
+        }
+    }
+    task.resume()
     }
 }

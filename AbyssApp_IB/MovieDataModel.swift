@@ -11,18 +11,13 @@ import UIKit
 
 class MovieDataModel: Codable{
     
+    var franchise: [Franchise] = []
+
+}
     
-    
-    let JSONURL = "https://api.myjson.com/bins/1e5uji"
-    var franchises: [Franchises]
-    var dataArray = ["Unexpected Data. Check URL."]
-    var entryArray = ["Potato"]
-    var starArray = ["William Shatner"]
-    
-    
-    class Franchises : Codable {
+    class Franchise : Codable {
         let franchiseName: String
-        let entries: [Entries]
+        var entries: [Entries] = []
     }
     
     class Entries : Codable {
@@ -31,12 +26,11 @@ class MovieDataModel: Codable{
         let yearStart: String
         let yearEnd: String?
         let episodes: Int?
-        let studio: String?
         let network: String?
-        let imageURL: String
+        let imageURL: String?
         let description: String
         let summary: String
-        let starring: [starring]
+        var starring: [starring] = []
     }
     
     class starring : Codable {
@@ -44,5 +38,4 @@ class MovieDataModel: Codable{
         let playing: String
     }
     
- 
-}
+
