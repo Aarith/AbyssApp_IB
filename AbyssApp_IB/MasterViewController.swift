@@ -11,7 +11,6 @@ import UIKit
 class MasterViewController: UITableViewController {
 
     var detailViewController: DetailViewController? = nil
-    var objects = [Any]()
     let dataController = DataController()
     var rebootDataModel: MovieDataModel? {
         didSet {
@@ -37,10 +36,11 @@ class MasterViewController: UITableViewController {
     let titleImageView = UIImageView(image: titleImage)
         navigationItem.titleView = titleImageView
     
-    dataController.getData(completion: {dataModel in
+    
+    dataController.getData(completion: { dataModel in
         self.rebootDataModel = dataModel
     })
-    }
+}
     override func viewWillAppear(_ animated: Bool) {
         clearsSelectionOnViewWillAppear = splitViewController!.isCollapsed
         super.viewWillAppear(animated)
@@ -58,7 +58,7 @@ class MasterViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetail" {
             if let indexPath = tableView.indexPathForSelectedRow {
-                let object = objects[indexPath.row] as! String
+                let selectedObject = rebootDataModel!.franchises[indexPath.row]
                 let controller = (segue.destination as! UINavigationController).topViewController as! DetailViewController
                 controller.detailItem = object
                 controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
@@ -70,18 +70,26 @@ class MasterViewController: UITableViewController {
     // MARK: - Table View
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return (rebootDataModel?.franchises.count) ?? 0
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return (rebootDataModel?.franchises[section].franchiseName) ?? "No data yet"
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return objects.count
+        return (rebootDataModel?.franchises[section].entries.count) ?? 0
     }
-
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
 
-        let object = objects[indexPath.row] as! NSDate
-        cell.textLabel!.text = object.description
+        let mediaName = (rebootDataModel?.franchises[indexPath.section].entries[indexPath.row].name)!
+        cell.textLabel!.text = mediaName
+        
+        let mediaYear = (rebootDataModel?.franchises[indexPath.section].entries[indexPath.row].yearStart)!
+        cell.detailTextLabel!.text = mediaYear
+        
         return cell
     }
 

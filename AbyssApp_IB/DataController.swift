@@ -14,24 +14,28 @@ class DataController: NSObject {
     var dataArray = ["Unexpected Data. Check URL."]
     var entryArray = ["Potato"]
     var starArray = ["William Shatner"]
+    var dataModel: Any?
 
-    func getData(completion: @escaping (_ success:Data) -> ()) {
+    func getData(completion: @escaping (_ dataModel: MovieDataModel) -> ()) {
         var success = Data()
         let actualURL = URL(string: JSONURL)
         
         let task = URLSession.shared.dataTask(with: actualURL!) { (data,response,error) in
-            
-            if let _ = data, error == nil {
-                if let jsonObj = try? JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? NSDictionary {
-                    if let movieArray = jsonObj!.value(forKey: "franchise") as?
-                        Array<String> {
-                        self.dataArray = movieArray
-                        
-                        print(jsonObj!.value(forKey: "franchise")!)
-                    }
-                }
+           
+            guard let data = data else {
+                return
             }
-            completion(success)
+            do {
+                let decoder = JSONDecoder ()
+                let mediaData = try decoder.decode(MovieDataModel.self, from: data)
+                self.dataModel = mediaData
+            }
+            catch let err {
+                print("Error", err)
+            }
+            DispatchQueue.main.async {
+            completion(self.dataModel as! MovieDataModel)
+            }
         }
         task.resume()
     }

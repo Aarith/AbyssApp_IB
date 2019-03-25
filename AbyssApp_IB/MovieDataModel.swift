@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class MovieDataController: Codable{
+class MovieDataModel: Codable{
     
     
     
